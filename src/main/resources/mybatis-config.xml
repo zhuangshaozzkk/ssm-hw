@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!-- 开启下划线映射驼峰命名 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--        &lt;!&ndash; 开启内嵌关联对象的懒加载(使用时再加载) &ndash;&gt;-->
+        <!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+        <!--        &lt;!&ndash; 开启内嵌关联对象的轻度懒加载(只要外部对象的任一方法被调用, 就完全加载所有内嵌的关联对象) &ndash;&gt;-->
+        <!--        <setting name="aggressiveLazyLoading" value="true"/>-->
+        <!--        &lt;!&ndash; 将null值映射为Jdbc类型的NULL, 而不是Other &ndash;&gt;-->
+        <!--        <setting name="jdbcTypeForNull" value="NULL"/>-->
+        <!--        &lt;!&ndash; 加载所有映射文件中配置的全局缓存 &ndash;&gt;-->
+        <!--        <setting name="cacheEnabled" value="true"/>-->
+        <!--        &lt;!&ndash; 打印SQL语句到控制台 &ndash;&gt;-->
+        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    </settings>
+
+    <!-- 类型别名 -->
+    <typeAliases>
+        <package name="com.zzkk.crud.bean"/>
+    </typeAliases>
+
+    <!-- plugins标签要放在typeAliases标签后面,引入分页插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 分页合理化，如果pageNum > pages，就让他查询最后一页。如果pageNum < 0，就查询第一页-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+</configuration>
+
